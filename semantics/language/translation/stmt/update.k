@@ -53,7 +53,7 @@ module C-STMT-UPDATE
 	rule <k> Hereisend => . ... </k>
 	     <signal-for-updatepatch> true => false </signal-for-updatepatch>
 
-	rule <k> Updatepoint => . ...</k>
+//	rule <k> Updatepoint => . ...</k>
 
 	rule <k> Inupdatepoint => . ... </k>
 	     <curr-program-loc> CabsLoc(S:String,I1:Int,I2:Int,I3:Int) </curr-program-loc>
@@ -76,9 +76,11 @@ module C-STMT-UPDATE
 	     <tu-id> Tu </tu-id>
 	     <induced-points> ... .Map => Loc |-> (.Set , .Set , .Set) </induced-points>
 
+        rule <k> Updatepoint => Inducedpoint ... </k>
+
 	rule <computation> Inupdatepoint => . ... </computation> 
 	rule <computation> Inducedpoint => . ... </computation>
-	
+	rule <computation> Updatepoint => . ... </computation>	
 /*   stuff about check-restriction */
 	
 // deal with the update point one by one 
@@ -281,6 +283,9 @@ module C-STMT-UPDATE
 
      rule <k> get-main-function' ... </k>
 	  <res-calc> Inupdatepoint => . ... </res-calc>
+
+     rule <k> get-main-function' ... </k>
+	  <res-calc> Updatepoint => . ... </res-calc>
 
      rule <k> get-main-function' ... </k>
 	  <res-calc> Inducedpoint => . ... </res-calc>
@@ -1029,6 +1034,9 @@ _,_) ... </k>
 	 <patch-unit> SetItem(Patch:String) </patch-unit>
 	 <tu-id> Patch </tu-id>
 	 <genv> Rho:Map </genv>
+
+    rule <k> induced-contextual (.Set) => . ... </k>
+	 <patch-unit> .Set </patch-unit>
 
     rule <k> get-global((SetItem(X:CId) => .Set) _) ... </k>
 	 <patch-unit> SetItem(Patch:String) </patch-unit>

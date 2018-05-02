@@ -374,6 +374,7 @@ module C-SYNTAX
      syntax PureStatement ::= "Updatepoint" [klable('Updatepoint)]
      syntax PureStatement ::= "Inupdatepoint" [klable('Inupdatepoint)]	
      syntax PureStatement ::= "Inducedpoint" [klable('Inducedpoint)]
+     syntax PureStatement ::= "Updatedpoint" [klable('Updatedpoint)]
 
      /*
      | SWITCH of expression * statement * cabsloc

@@ -4,6 +4,20 @@ See:
 - <http://code.google.com/p/k-framework/>
 - <http://k-framework.org/>
 
+
+## KupC -- extended the KCC
+KupC is based on the KCC by additional importing several file to formailzing the 
+dynamic update mechanism described in Ginseng.
+
+- [language/translation/stmt/update.k][]: semantics about dynamic update specific to 
+the translation phase.(I.e., type wrapping , restriction generation and patch 
+file importing)
+
+- [language/execution/stmt/update.k][]: semantics about dynamic update specific to the execution phase. (I.e., safety checking, program updating and state transformation)
+
+- [language/common/updete.k][]: semantics shared between the translation and execution
+  phases.
+
 ## Understanding the C semantics
 
 See:

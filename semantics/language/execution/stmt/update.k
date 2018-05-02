@@ -230,6 +230,7 @@ module C-STMT-UPDATE
 // update safety check 
 	rule <k> Inupdatepoint => . ... </k> 
 	
+	rule <k> Updatepoint => Inducedpoint ... </k>
 	rule <k> Inducedpoint => patch-available(Loc) ... </k>
 	     <curr-program-loc> Loc:K </curr-program-loc>
 	     <signal-for-update-finish> false </signal-for-update-finish>	
@@ -383,7 +384,7 @@ module C-STMT-UPDATE
 	     <update-line> _ => Loc:K </update-line>
 	     <update-signal> false => true </update-signal>
 	     <curr-program-loc> Loc </curr-program-loc>      [update]
-//	rule <k> whether-do-update => . ... </k>       	     [update]
+	rule <k> whether-do-update => . ... </k>       	     [update]
 
 //  i can't find where i first introduce it , so just ignore it .
 	rule <k> check-updatepoint (_) => . ... </k>

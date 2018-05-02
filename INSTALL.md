@@ -1,21 +1,20 @@
 ## Installation
 
-Please let us know if these instructions are insufficient or if you needed to
-do any installation steps not listed explicitly.
-
 We recommend using Linux or OSX on a computer with at least 1 GB of memory.
+
+The experiment environment is Ubuntu 16.04 and K 3.4 and KupC.
 
 On Ubuntu, if the K Framework has already been installed (from here:
 <https://github.com/kframework/k/releases/tag/v3.4>), the
-installation process for our C semantics can be summarized as:
+installation process for KupC can be summarized as:
 ```
 $ cd ~
 $ git clone --depth=1 https://github.com/kframework/c-semantics.git
 $ sudo apt-get install build-essential libxml-libxml-perl ocaml graphviz
 $ sudo cpan -i Text::Diff DBI DBD::SQLite Getopt::Declare
-$ cd c-semantics
+$ cd KupC
 $ make
-$ export PATH=$PATH:~/c-semantics/dist
+$ export PATH=$PATH:~/KupC/dist
 ```
 
 ### 1. Install basic dependencies.
@@ -64,37 +63,15 @@ To check if OCaml is installed:
 $ ocaml
         Objective Caml version 4.00.0
 
-# 
-```
-
-(Press ctrl-d to exit.)
 
 ### 4. Install K.
 - This version of the C semantics is compatible with version 3.4 of the K
   Framework (<https://github.com/kframework/k/releases/tag/v3.4>). See
   <http://kframework.org> for download and installation details.
 
-### 5. Install optional packages.
-- You may want to install Graphviz (dot), for generating images of the state
-  space when searching programs.
-- You can probably do this with your package manager. On Ubuntu:
-```
-$ sudo apt-get install graphviz
-```
-
-To check if dot is installed:
-```
-$ which dot
-/usr/bin/dot
-```
 
 ### 6. Download our C semantics.
-Use the following command if `git` is installed:
-```
-$ git clone --depth=1 https://github.com/kframework/c-semantics.git
-```
-Otherwise, download the latest stable version from github here:
-<https://github.com/kframework/c-semantics/releases/tag/v3.4.0>
+
 
 ### 7. Build our C tool.
 - Ensure `kompile` and `krun` are included in your `$PATH`. For example, if you
@@ -113,13 +90,6 @@ $ export PATH=$PATH:~/k/dist/bin
 $ export PATH=$PATH:/path/to/c-semantics/dist
 ```
       
-To check if kcc is behaving correctly:
-```
-$ dist/kcc tests/unitTests/helloworld.c
-$ ./a.out 
-Hello world
-```
-
-See [README.md](README.md) for a summary of the features supported by the `kcc`
+See [README.md](README.md) for a summary of the features supported by the `KupC`
 tool.
 
