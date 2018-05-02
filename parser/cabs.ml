@@ -222,7 +222,7 @@ and asm_details =
 and statement =
    NOP of cabsloc
  | INUPDATEPOINT of cabsloc 
- | INDUCEDPOINT of cabsloc
+ | UPDATEPOINT of cabsloc
  | COMPUTATION of expression * cabsloc
  | BLOCK of block * cabsloc
  | SEQUENCE of statement * statement * cabsloc

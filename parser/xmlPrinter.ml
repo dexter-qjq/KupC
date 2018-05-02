@@ -156,11 +156,9 @@ and printDef def =
 			printDefinitionLoc (wrap ((printIdentifier a) :: (printLTLExpression b) :: []) "LTLAnnotation") c
                 | STATIC_ASSERT (a, b, c) ->
 			printDefinitionLoc (wrap ((printExpression a) :: (printConstant b) :: []) "StaticAssert") c
-		| UPDATEPOINT (loc) -> printStatementLoc (printUpdatepoint) loc
 		| ITISUPDATEPATCH (loc) -> printStatementLoc (printItisupdatepatch) loc
 		| HEREISEND (loc) -> printStatementLoc (printHereisend) loc
 
-and printUpdatepoint = printCell "Updatepoint" [] ""
 and printItisupdatepatch = printCell "Itisupdatepatch" [] ""
 and printHereisend = printCell "Hereisend" [] ""			
 and printLTLExpression a =
@@ -584,8 +582,8 @@ and printBreak =
 	printCell "Break" [] ""
 and printInupdatepoint =
 	printCell "Inupdatepoint" [] ""
-and printInducedpoint =
-	printCell "Inducedpoint" [] ""
+and printUpdatepoint =
+	printCell "Updatepoint" [] ""
 and printContinue =
 	printCell "Continue" [] ""
 and printReturn exp =
@@ -629,7 +627,7 @@ and printStatement a =
 	| FOR (fc1, exp2, exp3, stat, loc) -> printStatementLoc (printFor fc1 exp2 exp3 stat) loc
 	| BREAK (loc) -> printStatementLoc (printBreak) loc
 	| INUPDATEPOINT (loc) -> printStatementLoc (printInupdatepoint) loc
-	| INDUCEDPOINT (loc) -> printStatementLoc (printInducedpoint) loc
+	| UPDATEPOINT (loc) -> printStatementLoc (printUpdatepoint) loc
 	| CONTINUE (loc) -> printStatementLoc (printContinue) loc
 	| RETURN (exp, loc) -> printStatementLoc (printReturn exp) loc
 	| SWITCH (exp, stat, loc) -> printStatementLoc (printSwitch exp stat) loc

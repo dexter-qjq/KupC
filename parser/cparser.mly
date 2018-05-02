@@ -304,7 +304,7 @@ let transformOffsetOf (speclist, dtype) member =
 %token<Cabs.cabsloc> SWITCH CASE DEFAULT
 %token<Cabs.cabsloc> WHILE DO FOR
 %token<Cabs.cabsloc> IF TRY EXCEPT FINALLY
-%token<Cabs.cabsloc> INUPDATEPOINT INDUCEDPOINT
+%token<Cabs.cabsloc> INUPDATEPOINT UPDATEPOINT
 %token ELSE 
 %token<Cabs.cabsloc> UPDATEPOINT ITISUPDATEPATCH HEREISEND
 
@@ -915,7 +915,7 @@ statement:
 	                         {RETURN (smooth_expression (fst $2), (*handleLoc*) $1)}
 |   BREAK SEMICOLON     {BREAK ((*handleLoc*) $1)}
 |   INUPDATEPOINT SEMICOLON  {INUPDATEPOINT ((*handleloc*) $1 )}
-|   INDUCEDPOINT SEMICOLON {INDUCEDPOINT (*handeleloc*) $1}
+|   UPDATEPOINT SEMICOLON {UPDATEPOINT (*handeleloc*) $1}
 |   CONTINUE SEMICOLON	 {CONTINUE ((*handleLoc*) $1)}
 |   GOTO IDENT SEMICOLON
 		                 {GOTO (fst $2, (*handleLoc*) $1)}

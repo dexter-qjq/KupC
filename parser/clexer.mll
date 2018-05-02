@@ -118,7 +118,7 @@ let init_lexicon _ =
     (fun (key, builder) -> H.add lexicon key builder)
     [ ("auto", fun loc -> AUTO loc);
       ("inupdatepoint", fun loc -> INUPDATEPOINT loc);
-      ("inducedpoint" , fun loc -> INDUCEDPOINT  loc);
+      ("updatepoint" , fun loc -> UPDATEPOINT  loc);
       ("break", fun loc -> BREAK loc);
       ("hereisend", fun loc -> HEREISEND loc);
       ("updatepoint", fun loc -> UPDATEPOINT loc);
