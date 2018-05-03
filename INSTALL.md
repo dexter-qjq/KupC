@@ -1,10 +1,9 @@
 ## Installation
-
 We recommend using Linux or OSX on a computer with at least 1 GB of memory.
 
 The experiment environment is Ubuntu 16.04 and K 3.4 and KupC.
 
-On Ubuntu, if the K Framework has already been installed (from here:
+On Ubuntu, if the K Framework 3.4 has already been installed (from here:
 <https://github.com/kframework/k/releases/tag/v3.4>), the
 installation process for KupC can be summarized as:
 ```
@@ -70,10 +69,10 @@ $ ocaml
   <http://kframework.org> for download and installation details.
 
 
-### 6. Download our C semantics.
+### 6. Download our KupC.
 
 
-### 7. Build our C tool.
+### 7. Build our KupC tool.
 - Ensure `kompile` and `krun` are included in your `$PATH`. For example, if you
   downloaded the K Framework to `~/k` (and add this to your `~/.bashrc` to make
   this permanent):

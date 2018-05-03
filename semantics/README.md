@@ -5,7 +5,7 @@ See:
 - <http://k-framework.org/>
 
 
-## KupC -- extended the KCC
+## Understanding KupC -- extended the KCC
 KupC is based on the KCC by additional importing several file to formailzing the 
 dynamic update mechanism described in Ginseng.
 
