@@ -53,7 +53,7 @@ module C-STMT-UPDATE
 	rule <k> Hereisend => . ... </k>
 	     <signal-for-updatepatch> true => false </signal-for-updatepatch>
 
-//	rule <k> Updatepoint => . ...</k>
+	rule <k> Updatepoint => Inducedpoint ...</k>
 
 	rule <k> Inupdatepoint => . ... </k>
 	     <curr-program-loc> CabsLoc(S:String,I1:Int,I2:Int,I3:Int) </curr-program-loc>
@@ -75,8 +75,6 @@ module C-STMT-UPDATE
 	     <curr-tu> Tu:String </curr-tu>
 	     <tu-id> Tu </tu-id>
 	     <induced-points> ... .Map => Loc |-> (.Set , .Set , .Set) </induced-points>
-
-        rule <k> Updatepoint => Inducedpoint ... </k>
 
 	rule <computation> Inupdatepoint => . ... </computation> 
 	rule <computation> Inducedpoint => . ... </computation>
@@ -283,7 +281,6 @@ module C-STMT-UPDATE
 
      rule <k> get-main-function' ... </k>
 	  <res-calc> Inupdatepoint => . ... </res-calc>
-
      rule <k> get-main-function' ... </k>
 	  <res-calc> Updatepoint => . ... </res-calc>
 

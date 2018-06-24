@@ -79,7 +79,7 @@ module C-UPDATE
 							ListItem(FieldGroup (Specifier ( list ( ListItem(StructRef (Identifier(S +String "_old"))) ) ) , list ( ListItem(FieldName ( Name ( Identifier ( "data" ) , JustBase ) )) ) ))
 							ListItem(FieldGroup (Specifier ( list ( ListItem(Char) ) ), list ( ListItem(FieldName ( Name ( Identifier ( "padding") , ArrayType ( JustBase , tv ( 50 , t ( .Set , int ) ) , Specifier ( list ( .List ) )) )))))) 
 ))))) , 
-list (ListItem(FieldName ( Name ( Identifier ( "udata" ) ,JustBase ) )) ) 
+list (ListItem(FieldName ( Name ( Identifier ( "udata" ) , JustBase ) )) ) 
 ))
 )
 )))

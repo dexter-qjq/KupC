@@ -1,6 +1,0 @@
-digraph test {
-	graph [bb="0,0,0,0",
-		ratio=fill
-	];
-	node [label="\N"];
-}

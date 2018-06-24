@@ -10,7 +10,12 @@ C11_FILES = $(wildcard *.k) \
 	$(wildcard language/common/*.k) $(wildcard language/common/*/*.k) \
 	$(wildcard library/*.k)
 
-K_CLEAN_FILES = .k c11-translation-kompiled c11-kompiled c11-nd-kompiled c11-nd-thread-kompiled
+C11_NON_FILES = $(wildcard *.k) \
+	$(wildcard language/execution2/*.k) $(wildcard language/execution2/*/*.k) \
+	$(wildcard language/common/*.k) $(wildcard language/common/*/*.k) \
+	$(wildcard library/*.k) 
+
+K_CLEAN_FILES = .k c11-translation-kompiled c11-kompiled c11-non-kompiled c11-nd-kompiled c11-nd-thread-kompiled c11-nond-kompiled
 
 .PHONY: default all fast nd thread clean
 
@@ -26,10 +31,20 @@ c11-kompiled: $(C11_FILES)
 	@$(KOMPILE) c11.k -d "c11-kompiled" -w all -v --transition "interpRule"
 	@touch c11-kompiled
 
+c11-non-kompiled: $(C11_NON_FILES)
+	@echo "Kompiling the dynamic C semantics non-determinism..."
+	@$(KOMPILE) c11-non.k -d "c11-non-kompiled" -w all -v --transition "interpRule"
+	@touch c11-non-kompiled
+
 c11-nd-kompiled: $(C11_FILES)
 	@echo "Kompiling the dynamic C semantics with update non-determinism..."
-	@$(KOMPILE) c11.k -d "c11-nd-kompiled" -w all -v --transition "update","finish-update"  #--superheat "addition"
+	@$(KOMPILE) c11.k -d "c11-nd-kompiled" -w all -v --transition "update","finish-update" #--superheat "addition"
 	@touch c11-nd-kompiled
+
+c11-nond-kompiled: $(C11_FILES)
+	@echo "Kompiling the dynamic C semantics with update non-determinism..."
+	@$(KOMPILE) c11-non.k -d "c11-nond-kompiled" -w all -v --transition "update","finish-update" #--superheat "addition"
+	@touch c11-nond-kompiled
 
 c11-nd-thread-kompiled: $(C11_FILES)
 	@echo "Kompiling the dynamic C semantics with thread-interleaving non-determinism..."
@@ -38,7 +53,7 @@ c11-nd-thread-kompiled: $(C11_FILES)
 
 all: fast nd thread
 
-fast: c11-translation-kompiled c11-kompiled
+fast: c11-translation-kompiled c11-kompiled c11-non-kompiled c11-nond-kompiled
 
 nd: c11-nd-kompiled
 

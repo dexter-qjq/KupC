@@ -37,14 +37,14 @@ int changeEW(){
 }
 
 int main(void){
-	int i = 4 ;
+	int i = 5 ;
 	int x ;
 		while(i >= 0) {
 		inupdatepoint ;
-		inducedpoint;
-		x = changeEW() + changeNS();
+		updatepoint;
+		changeEW() + changeNS();
 	 	i = i - 1 ;
-		printf("%d\n", x) ;
+		printf("NS=%d\tEW=%d\n", lightNS,lightEW) ;
 		inupdatepoint;
 	}
 	

@@ -33,7 +33,9 @@ $(DIST_DIR): $(FILES_TO_DIST) semantics | check-vars
 	@cp $(FILES_TO_DIST) $(DIST_DIR)
 	@cp -r $(SEMANTICS_DIR)/c11-translation-kompiled $(DIST_DIR)
 	@cp -r $(SEMANTICS_DIR)/c11-kompiled $(DIST_DIR)
+	@cp -r $(SEMANTICS_DIR)/c11-non-kompiled $(DIST_DIR)
 	@cp -r $(SEMANTICS_DIR)/c11-nd-kompiled $(DIST_DIR)
+	@cp -r $(SEMANTICS_DIR)/c11-nond-kompiled $(DIST_DIR)
 	@cp -r $(SEMANTICS_DIR)/c11-nd-thread-kompiled $(DIST_DIR)
 	@mv $(DIST_DIR)/*.h $(DIST_DIR)/includes
 	@echo "Translating the standard library..."

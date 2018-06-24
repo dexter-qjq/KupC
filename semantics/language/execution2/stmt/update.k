@@ -392,7 +392,6 @@ module C-STMT-UPDATE
 	     <update-signal> false => true </update-signal>
 	     <curr-program-loc> Loc </curr-program-loc>      [update]
 
-	rule <k> whether-do-update => . ... </k>       	     [update]
 
 //  i can't find where i first introduce it , so just ignore it .
 	rule <k> check-updatepoint (_) => . ... </k>

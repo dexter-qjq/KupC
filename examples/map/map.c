@@ -11,60 +11,39 @@ struct VertexType{
 }; 
 
 struct MGraph{
-	struct VertexType vex[5];  
-	struct ArcCell arcs[5][5]; 
+	struct VertexType vex[7];  
+	struct ArcCell arcs[7][7]; 
 	int vexnum;  
 }; 
-
-struct student 
-{	
-	int name ;
-	int code ;
-};
-
-struct student gcl ;
 
 
 struct MGraph G; 
 
-int P[5][5];
-long int D[5];
+int P[7][7];
+long int D[7];
 
 void CreateUDN()  
 { 	int i,j;
-	gcl.name = 10 ;
-	gcl.code = 20 ;
-	for(i=0;i<5;++i) G.vex[i].number=i;
-	G.vex[0].city="aaa";
-	G.vex[1].city="bbb";
-	G.vex[2].city="ccc";
-	G.vex[3].city="ddd";
-	G.vex[4].city="eee";
-	for(i=0;i<5;++i)
-		for(j=0;j<5;++j)
+	for(i=0;i<7;++i) G.vex[i].number=i;
+	G.vex[0].city="v0";
+	G.vex[1].city="v1";
+	G.vex[2].city="v2";
+	G.vex[3].city="v3";
+	G.vex[4].city="v4";
+	G.vex[5].city="v5";
+	G.vex[6].city="v6";
+	for(i=0;i<7;++i)
+		for(j=0;j<7;++j)
 			G.arcs[i][j].adj=20000;
-	G.arcs[0][2].adj=G.arcs[2][0].adj=1892;
-	G.arcs[1][2].adj=G.arcs[2][1].adj=216;
-	G.arcs[2][3].adj=G.arcs[3][2].adj=1145;	
-	G.arcs[3][4].adj=G.arcs[4][3].adj=668;
-}
-
-void narrate() 
-{
-	int i,k=0;
-	printf("\nthe city list is shown below:\n\n");
-	for(i=0;i<5;i++)
-	{
-		printf("(%4d)%8s",i,G.vex[i].city); 
-		k=k+1;
-		if(k%5==0) printf("\n");
-	}
-}
-
-void welcome()
-{
-	printf("welcome to travel map !\n");
-	narrate();
+	G.arcs[0][1].adj=G.arcs[1][0].adj=1;
+	G.arcs[0][2].adj=G.arcs[2][0].adj=2;
+	G.arcs[0][3].adj=G.arcs[3][0].adj=3;	
+	G.arcs[1][4].adj=G.arcs[4][1].adj=1;
+	G.arcs[1][2].adj=G.arcs[2][1].adj=2;
+	G.arcs[4][6].adj=G.arcs[6][4].adj=1;
+	G.arcs[3][6].adj=G.arcs[6][3].adj=2;
+	G.arcs[2][5].adj=G.arcs[5][2].adj=2;
+	G.arcs[6][5].adj=G.arcs[5][6].adj=2;
 }
 
 
@@ -73,16 +52,16 @@ void ShortestPath( int num )
 	inupdatepoint ;
 	CreateUDN();
 	updatepoint;
-	welcome();
+	CreateUDN();
 	updatepoint;
 	int v,w,i,t;
-	int final[5];
+	int final[7];
 	int min;
-	for(v=0;v<5;++v)
+	for(v=0;v<7;++v)
 	{
 		final[v]=0;
         D[v]=G.arcs[num][v].adj;
-		for(w=0;w<5;++w)
+		for(w=0;w<7;++w)
         P[v][w]=0;
 		if(D[v]<20000) {
         P[v][num]=1;
@@ -90,19 +69,19 @@ void ShortestPath( int num )
 	}
 	D[num]=0;
 	final[num]=1;
-	for(i=0;i<5;++i)
+	for(i=0;i<7;++i)
 	{
 		min=20000;
-		for(w=0;w<5;++w)
+		for(w=0;w<7;++w)
 			if(!final[w])
 				if(D[w]<min){v=w;min=D[w];}
 		final[v]=1;
-		for(w=0;w<5;++w)
+		for(w=0;w<7;++w)
 		{	
 			if(!final[w]&&((min+G.arcs[v][w].adj)<D[w]))
 			{	
 				D[w]=min+G.arcs[v][w].adj;
-				for(t=0;t<5;t++) P[w][t]=P[v][t];
+				for(t=0;t<7;t++) P[w][t]=P[v][t];
 				P[w][w]=1;
 			}
 		}
@@ -118,19 +97,19 @@ void output(int city1, int city2)
 	a=city2;
 	if(a!=city1)
 	{
-		printf("\nfrom %s to %s the best path is ",G.vex[city1].city,G.vex[city2].city);
-		printf("(the shortest distance is %ldkm.)\n\t",D[a]);
+		printf("\nfrom %s to %s ",G.vex[city1].city,G.vex[city2].city);
+		printf(" %ldkm.\n\t",D[a]);
 		printf("%s",G.vex[city1].city);
 		d=city1;
-		for(c=0;c<5;++c)
+		for(c=0;c<7;++c)
 		{
 gate:; 
 	 P[a][city1]=0;
-	 for(b=0;b<5;b++)
+	 for(b=0;b<7;b++)
 	 {
 		 if(G.arcs[d][b].adj<20000 && P[a][b])
 		 {
-			 printf(" --> %s ",G.vex[b].city);q=q+1;
+			 printf(" --> %s",G.vex[b].city);q=q+1;
 			 P[a][b]=0;
 			 d=b;
 			 if(q%8==0) printf("\n");
@@ -142,27 +121,20 @@ gate:;
 
 }
 
-void shuchu()
-{
-	printf("%d\n",gcl.name);
-}
+
 
 int main() 
 {
-	inupdatepoint;
 	int v0,v1;
-	v0 = 0 ; v1 = 1 ;
+	v0 = 0 ; v1 = 6 ;
+
 	ShortestPath(v0);
-	updatepoint ;
-        output(v0,v1);
-	printf("\n\n\n");
-	inupdatepoint ;
-	inupdatepoint ;
+//	output(v0,v1) ;
+//	printf("\n\n\n");
+
 	ShortestPath(v0);
-	updatepoint ;	
-        output(v0,v1);
-	printf("\n\n\n");
-	inupdatepoint ;
-	shuchu();
+	output(v0,v1) ;
+	printf("\n");
+
    	return 0;
 }

@@ -8,8 +8,8 @@ struct VertexType{
 }; 
 
 struct MGraph{
-	struct VertexType vex[5];  
-	struct ArcCell arcs[5][5]; 
+	struct VertexType vex[7];  
+	struct ArcCell arcs[7][7]; 
 	int vexnum; 
 };
 
