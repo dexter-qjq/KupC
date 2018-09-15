@@ -32,3 +32,4 @@ The examples about the State Space Search and LTL Model Checking can be viewed i
 
 
 The demo video is available at  https://pan.baidu.com/s/1MPASGh4jPHWKeBvag3foUg  password:628g
+or   https://youtu.be/ijTOMLd6z1s
