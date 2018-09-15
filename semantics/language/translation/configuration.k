@@ -102,6 +102,14 @@ module C-CONFIGURATION
 	<tmp-update-point> .Set </tmp-update-point>			// for paired semantic update points 
 	<restriction-calc>
 		<res-calc> .K </res-calc>
+		<pbinding> .Map </pbinding>   // 保存参数绑定信息
+		<function-pointer> .List </function-pointer>    // save  function pointer 同下 
+		<fp-func> .Set </fp-func>                       // 保存涉及函数指针作为参数的函数的block number
+		<local-struct-var> .Map </local-struct-var>
+		<ava-pointer> .Set </ava-pointer>   // 保存所有指针名称
+		<ava-live> .List </ava-live>
+		<save-area> .List </save-area>
+		<for-ava> .List </for-ava>
 		<res-block-history> .List </res-block-history>
 		<recent-out-block> .Set </recent-out-block>
 		<block-pair> .Set </block-pair>

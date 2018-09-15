@@ -116,6 +116,16 @@ module C-STMT-UPDATE
 	     <genv> ... 
 			Y:CId |-> Base 
 	     ... </genv>
+
+	rule <k> check-struct-version' (_,I:Int,Base:K) => . ... </k>
+		 <main-tu> SetItem(MainTu:String) </main-tu>
+	     <signal-for-update-finish>  true  </signal-for-update-finish>
+	     <tu-id> MainTu </tu-id>
+	     <genv> Rho:Map </genv>
+		 <mem> ...
+			Base |-> object(_,_, 0|-> piece(_ => I,_ )_)
+	 	 ... </mem>
+			when notBool(Base in values(Rho))
 //	     <mem> ... 
 //			Base |-> object(_,_,_:Int |-> piece ( I2:Int , _ )_ )
 //	     ... </mem>
@@ -153,7 +163,14 @@ module C-STMT-UPDATE
 	     <mem> ... 
 		Base |-> object(_,_,_ I |-> P:K _) 
 	     ... </mem>
-	when I1 >Int 0
+
+
+	rule <k> save-struct-data''( Base:K , _ , I:Int  => I +Int 1 , tv(I1:Int => I1 -Int 1 ,_)) ... </k>
+	    // <saved-struct-data> ... (X::_) |-> list(_ (.List => ListItem(P))) ... </saved-struct-data>
+	    <mem> ... 
+			Base |-> object(_,_,Rho:Map) 
+	     ... </mem>
+	when notBool( I in keys(Rho)) 
 
 	rule <k> save-struct-data''(_,_,_,tv(0,_)) => . ...</k>	 
 	rule <k> save-struct-data'(_,.Map,.Map) => . ... </k>    
