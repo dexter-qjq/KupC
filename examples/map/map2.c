@@ -21,7 +21,7 @@ struct MGraph{
 struct MGraph G; 
 
 int P[7][7];
-long int D[7] = {0};
+long int D[7];
 
 void CreateUDN()  
 { 	int i,j;
@@ -120,31 +120,6 @@ void output(int city1, int city2)
 		 	}
 		}
 	}
-/*
-	if(a!=city1)
-	{
-		printf("\ncheapest from %s to %s ",G.vex[city1].city,G.vex[city2].city);
-		printf(" $%ld.\n",DD[a]);
-		printf("%s",G.vex[city1].city);
-		d=city1;
-		for(c=0;c<7;++c)
-		{
-			 gate2:; 
-			 PP[a][city1]=0;
-			 for(b=0;b<7;b++)
-			 {
-				 if(G.arcs[d][b].adj<20000 && PP[a][b])
-				 {
-					 printf(" --> %s",G.vex[b].city);q=q+1;
-					 PP[a][b]=0;
-					 d=b;
-					 if(q%8==0) printf("\n");
-				 		goto gate2;
-			 	}
-		 	}
-		}
-	}
-*/
 }
 
 void calculate(int v0, int v1)
@@ -170,14 +145,13 @@ int main()
 	int v0 = 0;
 	int v1 = 6;
 
-	CreateUDN();
-	calculate(0,6);
-	printf("\n\n");
-/*
-	calculate(0,6);
+	calculate(v0,v6);
 	printf("\n\n");
 
-	calculate(0,6);
-	printf("\n\n");*/
+	calculate(v0,v6);
+	printf("\n\n");
+
+	calculate(v0,v6);
+	printf("\n\n");
    	return 0;
 }
