@@ -3,7 +3,6 @@
 
 struct ArcCell{
 	int adj; 
-//	int pay; 
 }; 
 
 struct VertexType{
@@ -126,14 +125,9 @@ void calculate(int v0, int v1)
 {
 	inupdatepoint ;
 	updatepoint ;
-	CreateUDN();
-
 	Path(v0);
-
 	updatepoint ;
-
 	output(v0,v1);
-
 	updatepoint ;
 	inupdatepoint ;
 }
